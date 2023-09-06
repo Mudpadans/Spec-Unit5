@@ -1,16 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BsFillFlagFill } from "react-icons/bs";
 
 import { 
     deletePotentialCountries, 
     setPotentialCountries 
 } from "../redux/slices/potentialCountriesSlice";
+import { selectDisplay, deleteDisplayCountry } from "../redux/slices/displayCountriesSlice";
 
 const Header = () => {
     const dispatch = useDispatch();
     const [input, setInput] = useState();
+    const currentDisplay = useSelector(selectDisplay)
 
     return (
         <div className="header">
@@ -19,7 +21,9 @@ const Header = () => {
                     style={{ marginRight: "10px" }}
                     fontSize="1.6em"
                 />
-                <h3 className="home-country"></h3>
+                <h3 className="home-country">
+                    {currentDisplay && currentDisplay.name.common}
+                </h3>
             </div>
             <div className="country-input">
                 <input
@@ -34,6 +38,7 @@ const Header = () => {
                             .then((res) => {
                                 dispatch(deletePotentialCountries())
                                 dispatch(setPotentialCountries(res.data))
+                                dispatch(deleteDisplayCountry())
                                 console.log(res.data);
                             })
                             .catch((err) => {
