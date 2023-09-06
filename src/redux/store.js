@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import potentialCountriesReducer from "../redux/slices/potentialCountriesSlice";
+import displayCountryReducer from "../redux/slices/displayCountriesSlice";
 
 const store = configureStore({
-    reducer: { potentialCountries: potentialCountriesReducer },
-})
+    reducer: { 
+        potentialCountries: potentialCountriesReducer,
+        displayCountry: displayCountryReducer
+    }
 
-console.log(store.getState().potentialCountries.value.name);
+})
 
 export default store;
