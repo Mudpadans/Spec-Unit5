@@ -3,13 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 export const potentialCountriesSlice = createSlice({
     name: 'potentialCountries',
     initialState: {
-        value: {
-            name: [
-                {
-                    common: "USA"
-                }
-            ]
-        }
+        value: [
+            {
+                name:
+                    {
+                        common: "USA"
+                    }
+            }
+        ]
     },
     reducers: {
         setPotentialCountries: (state, action) => {

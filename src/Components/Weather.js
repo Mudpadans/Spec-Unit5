@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { selectDisplay } from '../redux/slices/displayCountriesSlice';
 
+const apiKey = process.env
+
 const Weather = () => {
     const [weather, setWeather] = useState();
     const display = useSelector(selectDisplay);
@@ -17,7 +19,7 @@ const Weather = () => {
         params: {q: `${latitude}, ${longitude}`},
         headers: {
             'X-RapidAPI-Key': 
-                'a2a6e8aeb7msh2a8642afb32e42ap177815jsn87fed0c2b0f5',
+                apiKey,
             'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
         },
         };
